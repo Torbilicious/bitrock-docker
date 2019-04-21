@@ -1,14 +1,14 @@
 dist: trusty
 env:
-  - CONTAINER_NAME="bitrock-installbuilder"
+  #  - CONTAINER_NAME="bitrock-installbuilder"
   global:
     - secure: uAvrhZO4ksD07iugtRsIqPGl15LSUn6pOXFZzYBEAWbXKcROXYua+s2kae/JwDKRgvRRdf8srTKwwV2aOgUhl0LsUAa4DtbnksbSeNASHUn8sJAuuJkLR/oJlK54+U5ssIWT/198NKmI6s3KkEhtEiFvMMv8Yu2+Wj0px/sgYl14H0QEA2YBtQMKGcpvy1KDXNDKhP3uzVZAn/y+ojGvsOU9ffHxdwG1aWj6xtn3AIjZXPstXOOpUkpQt4JYaKgy5QolqC83v1uKHD1T5kMny+0uVqmlqrnv0F2Leh9/J3EBlTn3qcWxP80F1WMyqViv96Ecax8aBisiOe0+MbwPAqWTGv+kEClOdhf2yfMzkoGM3IZ7JF+R43bbGc4jCqBs+KBXQxyzvSTL1nCM9XO9S3RZxQhpWXSRPA5rLW2pxCOPy5crbw9uY0xxgLWVbrDuiDSeefx5QpqUFYHgBhkj5t/RvDk/NDv9nNDlNDnAGOume4+6zfGapmP+kcmxB4vBiGPNle9JEPctdTEGcYYeJomQK5iejfW+pvf7W1KXZQTS4tbqrRqNQ6dESGxBAx6m4EuMGzKjXGI3kxgMqRwXpGiX3iKw0ZPHJrPnLkJLaVkGBsxRX+BfdzRvQJcc4hYaueMFx8ru3WstqODlNNmfn7V33Akj3uIp/TzKetUg56k=
     - secure: Yj0N7MbLyqSLz8NvfZsNZ2kyXZO1REpV6hfjqoiQXoU1dynB9qKEqFNCOcppoS6al97Q7AQ3W/2Dm5OEYQl6pMdo24NsOJhNuRU0D4i7SWRExUu9IDv+QKMs/oNHjuSLmhAyN11dYYFsWj5eLiTM99/0za3lI6YJAA/FO0VjWjHo6uIqH1wH7ylrfiVojsWgHL6jbUht43UKlTKIkUvGed3eNEc/iE4BoZgWluWnyPhjIRbz3Of0mi9AG7hJuqZQm9wt2Fw64kuYliQSm5IJ1FkeBYo23FnLg8xTGEC7x1RkBmu8KsmxkePJMx/9IZdfiIPxajuhs8Y2YTagcChvEuHJkW0Zye3qN4E7ZivVTkx9m1ky1zrZWqHJYNezQIGp2pFFsBbkURhvYJmJmJoygSdpjzBcfj/lJGMZtS8u7TPnxSXs/k2HS8cWT7dZHBpqtiuf0sT2brP75O23PZFNDXStZH5eA7A1ew/Zzd+iMh5rKRmn3IyQDCCVxI6ISMp52mvfJyucAQ8j/FMfmwq7+nKAd7Y9YkuE1Ht1fmqKQ06zLE0zB/5/JVxj+IM0jZ+IcyA4szvwDlwl6EJdbE6qGz3hFh4AlBiRcFIqji46d/awss4yN34PU9vaxBaok605aZ8QVQg6fG7R3YYS0y7d2Cfu9CawVJw1NWTls2GsRcM=
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t $CONTAINER_NAME .
+  - docker build -t bitrock-installbuilder .
   - docker images
   # Always push latest tag
-  - docker tag $CONTAINER_NAME $DOCKER_USERNAME/$CONTAINER_NAME
-  - "docker tag $CONTAINER_NAME $DOCKER_USERNAME/$CONTAINER_NAME:$TRAVIS_BUILD_NUMBER"
-  - docker push $DOCKER_USERNAME/$CONTAINER_NAME
+  - docker tag bitrock-installbuilder $DOCKER_USERNAME/bitrock-installbuilder
+  - "docker tag bitrock-installbuilder $DOCKER_USERNAME/bitrock-installbuilder:$TRAVIS_BUILD_NUMBER"
+  - docker push $DOCKER_USERNAME/bitrock-installbuilder
