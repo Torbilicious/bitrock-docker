@@ -9,6 +9,6 @@ script:
   - docker build -t $CONTAINER_NAME .
   - docker images
   # Always push latest tag
-  - docker tag bitrock $DOCKER_USERNAME/$CONTAINER_NAME
-  - "docker tag bitrock $DOCKER_USERNAME/$CONTAINER_NAME:$TRAVIS_BUILD_NUMBER"
+  - docker tag $CONTAINER_NAME $DOCKER_USERNAME/$CONTAINER_NAME
+  - "docker tag $CONTAINER_NAME $DOCKER_USERNAME/$CONTAINER_NAME:$TRAVIS_BUILD_NUMBER"
   - docker push $DOCKER_USERNAME/$CONTAINER_NAME
