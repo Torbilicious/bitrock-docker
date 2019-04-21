@@ -1,0 +1,2 @@
+bitrock-installer/** filter=lfs diff=lfs merge=lfs -text
+bitrock-installer/installbuilder-qt-professional-19.4.0-linux-x64-installer.run filter=lfs diff=lfs merge=lfs -text
