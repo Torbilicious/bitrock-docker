@@ -7,5 +7,7 @@ script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t bitrock .
   - docker images
+  # Always push latest tag
   - docker tag bitrock $DOCKER_USERNAME/bitrock
+  - "docker tag bitrock $DOCKER_USERNAME/bitrock:$TRAVIS_BUILD_NUMBER"
   - docker push $DOCKER_USERNAME/bitrock
