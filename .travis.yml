@@ -1,11 +1,8 @@
 dist: trusty
 
-jobs:
-  include:
-    - stage: Build Docker Image
-      script:
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker build -t bitrock .
-        - docker images
-        - docker tag bitrock $DOCKER_USERNAME/bitrock
-        - docker push $DOCKER_USERNAME/bitrock
+script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t bitrock .
+  - docker images
+  - docker tag bitrock $DOCKER_USERNAME/bitrock
+  - docker push $DOCKER_USERNAME/bitrock
